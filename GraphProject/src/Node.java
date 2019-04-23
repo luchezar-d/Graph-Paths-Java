@@ -5,6 +5,9 @@ public class Node {
 	public double weight;
 	public int x, y;
 	
+	boolean isTested = false;
+	boolean isExpanded = false;
+	
 	public ArrayList<Link> links = new ArrayList<Link>();
 	
 	public Node(String name) {
@@ -20,4 +23,8 @@ public class Node {
 		this.y = y;
 	}
 	
+	public void reset() {
+		this.isExpanded = false;
+		this.isTested = false;
+	}
 }

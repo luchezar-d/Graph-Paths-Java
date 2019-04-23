@@ -1,3 +1,5 @@
+import java.security.KeyStore.Entry;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Graph {
@@ -25,5 +27,27 @@ public class Graph {
 		}else {
 			System.err.println("Wrong or missing node names !");
 		}
+	}
+	public Node getNode(String name) {
+		return myGraph.get(name);
+	}
+	
+	public boolean containsNode(String name) {
+		return myGraph.containsKey(name);
+	}
+	
+	public ArrayList<Node> getLinkedNodes(String name){
+		ArrayList<Node> linkedNodes = new ArrayList<>(); 
+		Node node = myGraph.get(name);
+		
+		for(Link l : node.links) {
+			linkedNodes.add(myGraph.get(l.toNodeName));
+		}
+		
+		return linkedNodes;
+	}
+	
+	public void resetAllNodes() {
+		myGraph.forEach((k,v) -> v.reset());
 	}
 }
